@@ -9,26 +9,29 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
   </head>
   <body>
-    <h1 class="titulo">Lista de Productos</h1>
+    <h1 class="titulo">Producto</h1>
 
-    <div class="flex-container">
-      {% for producto in productos %}
+    <div >
+     
       <div class="product-card">
         <div class="product-tumb">
           <img src="{{ producto.image}}" alt="{{ producto.title }}" />
         </div>
         <div class="product-details">
-          <a href="{% url 'product_detail' producto.id %}">
-             <h4>{{ producto.title }}</h4>
-          </a>
+            
+            <h4>{{ producto.title }}</h4>
           <div class="product-bottom-details">
             <div class="product-price">Precio: ${{ producto.price }}</div>
           </div>
           <!-- truncatewords:15 indicaría que se deben mostrar las primeras 20 palabras y luego agregar ... al final.-->
           <p>{{ producto.description|truncatewords:15 }}</p>
+          <a href="{% url 'delete_product' producto.id %}">
+             <button>Delete Product</button>
+          </a>
         </div>
       </div>
-      {% endfor %}
     </div>
+
+    
   </body>
 </html>
